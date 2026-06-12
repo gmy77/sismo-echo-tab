@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Nuova scheda</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; background: #080e14; }
+
+  #echo-frame {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    border: 0; background: #080e14;
+    opacity: 0; transition: opacity .35s ease;
+  }
+  #echo-frame.ready { opacity: 1; }
+
+  /* loader */
+  #loader {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 18px;
+    color: #546e7a; font-family: monospace; font-size: 12px;
+    letter-spacing: .18em; text-transform: uppercase;
+  }
+  #loader .ring {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 2px solid rgba(38,198,218,.15);
+    border-top-color: #26c6da;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* fallback offline */
+  #fallback {
+    position: fixed; inset: 0; display: none;
+    flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    color: #eceff1; font-family: 'Segoe UI', sans-serif;
+  }
+  #fallback.show { display: flex; }
+  #fb-clock { font-size: clamp(4rem, 12vw, 8rem); font-weight: 200; letter-spacing: -.02em; color: #9fe8f0; }
+  #fb-date { font-family: monospace; font-size: .85rem; color: #546e7a; letter-spacing: .15em; text-transform: uppercase; }
+  #fb-msg { margin-top: 18px; font-family: monospace; font-size: .72rem; color: #37474f; }
+  #fb-retry {
+    margin-top: 8px; padding: 8px 22px; border-radius: 20px; cursor: pointer;
+    background: rgba(38,198,218,.1); border: 1px solid rgba(38,198,218,.3);
+    color: #26c6da; font-family: monospace; font-size: .75rem; letter-spacing: .1em;
+  }
+  #fb-retry:hover { background: rgba(38,198,218,.2); }
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="ring"></div>ECHO · connessione</div>
+
+<iframe id="echo-frame" src="https://sismo-fvg.gimmy077.workers.dev/newtab" allow="clipboard-write"></iframe>
+
+<div id="fallback">
+  <div id="fb-clock">--:--</div>
+  <div id="fb-date"></div>
+  <div id="fb-msg">⚠ ECHO Monitor non raggiungibile — modalità offline</div>
+  <button id="fb-retry">↻ RIPROVA</button>
+</div>
+
+<script src="newtab.js"></script>
+</body>
+</html>
