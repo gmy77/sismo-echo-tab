@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "SISMO ECHO Tab",
   "short_name": "ECHO Tab",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "La tua nuova scheda: orologio, ricerca, ECHO Suite e monitoraggio sismico live FVG + Campi Flegrei con correlazione solare NOAA.",
   "author": "Gimmy Pignolo",
   "homepage_url": "https://github.com/gmy77/sismo-echo",
@@ -14,5 +14,9 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "host_permissions": [
+    "https://webservices.ingv.it/*",
+    "https://services.swpc.noaa.gov/*"
+  ],
   "offline_enabled": false
 }
