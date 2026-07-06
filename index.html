@@ -133,7 +133,7 @@ html, body {
   padding: 18px 20px;
   border-radius: 20px;
   border: 1px solid rgba(168,237,234,.12);
-  background: rgba(2,8,16,.45);
+  background: rgba(2,8,16,.62);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   box-shadow:
@@ -341,13 +341,16 @@ html, body {
       return v;
     }
 
-    // Stars
+    // Stars — punto tondo al centro della cella, non tutta la cella
     float stars(vec2 uv, float density, float t) {
-      vec2 g = floor(uv * density);
+      vec2 p = uv * density;
+      vec2 g = floor(p);
       float h = hash(g);
       if(h > .985) {
+        vec2 f = (fract(p) - .5) * vec2(u_res.x / u_res.y, 1.);
+        float core = smoothstep(.42, .08, length(f));
         float twinkle = .6 + .4*sin(t*3.+h*60.);
-        return twinkle * smoothstep(.995, .999, h);
+        return twinkle * smoothstep(.995, .999, h) * core;
       }
       return 0.;
     }
