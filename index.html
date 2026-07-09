@@ -218,6 +218,36 @@ html, body {
 }
 .sw-cell b { display: block; font-size: .82rem; color: #a8edeacc; font-weight: 300; margin-top: 1px; }
 
+/* ── Quick links row ── */
+.links {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 22px;
+  animation: fadeUp .6s ease .38s both;
+  pointer-events: all;
+}
+.link-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(168,237,234,.15);
+  background: rgba(2,8,16,.62);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  font-family: 'Courier New', monospace;
+  font-size: .62rem; letter-spacing: .2em;
+  text-transform: uppercase; text-decoration: none;
+  color: #a8edea;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.06) inset;
+  transition: border-color .3s, transform .2s, box-shadow .3s;
+}
+.link-pill:hover {
+  border-color: rgba(168,237,234,.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.45), 0 0 20px rgba(78,205,196,.12);
+}
+.link-pill .pill-ico { font-size: .85rem; line-height: 1; }
+
 /* ── Animations ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -287,6 +317,12 @@ html, body {
       </div>
     </div>
 
+  </div>
+
+  <div class="links">
+    <a class="link-pill" href="https://astro.gimmycloud.net" target="_top" rel="noopener">
+      <span class="pill-ico">🪐</span>AstroSandbox
+    </a>
   </div>
 </div>
 
