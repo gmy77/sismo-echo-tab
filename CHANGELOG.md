@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.4.3 - 2026-10-13
+
+- Usa il feed NOAA SWPC consolidato a 3 ore come sorgente primaria del KP Index.
+- Mantiene il feed KP a 1 minuto come fallback, evitando che record recenti a `0.0` facciano sembrare il campo fermo a zero.
+
 ## 3.4.2 - 2026-10-13
 
 - Aggiunge badge fisso in basso a destra con versione e data di rilascio.
