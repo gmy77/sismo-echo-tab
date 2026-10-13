@@ -11,6 +11,7 @@ nella dashboard personale di [SISMO ECHO](https://github.com/gmy77/sismo-echo):
 orologio, ricerca, ECHO Suite e monitoraggio sismico live.
 
 ![Version](https://img.shields.io/badge/version-3.4.1-26c6da)
+![Release](https://img.shields.io/badge/release-2026--10--13-26c6da)
 ![Manifest](https://img.shields.io/badge/manifest-V3-blue)
 ![Edge](https://img.shields.io/badge/Edge-✓-0078D7?logo=microsoftedge&logoColor=white)
 ![Chrome](https://img.shields.io/badge/Chrome-✓-4285F4?logo=googlechrome&logoColor=white)
@@ -108,8 +109,9 @@ sismo-echo-tab/
 
 ## 🔢 Versioning
 
-La versione dell'estensione segue quella di SISMO ECHO (`ECHO_VERSION`, attualmente **3.4.1**),
-che cresce automaticamente ad ogni modifica del worker tramite pre-commit hook.
+Versione corrente: **3.4.1** — rilascio **2026-10-13**.
+
+Ogni modifica pubblicata aggiorna sempre versione e data di rilascio.
 La shell dell'estensione cambia raramente: il contenuto si aggiorna da solo via edge.
 
 ---
