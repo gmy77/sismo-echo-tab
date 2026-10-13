@@ -10,7 +10,7 @@ Estensione per **Microsoft Edge** e **Google Chrome** che trasforma ogni nuova s
 nella dashboard personale di [SISMO ECHO](https://github.com/gmy77/sismo-echo):
 orologio, ricerca, ECHO Suite e monitoraggio sismico live.
 
-![Version](https://img.shields.io/badge/version-3.4.1-26c6da)
+![Version](https://img.shields.io/badge/version-3.4.2-26c6da)
 ![Release](https://img.shields.io/badge/release-2026--10--13-26c6da)
 ![Manifest](https://img.shields.io/badge/manifest-V3-blue)
 ![Edge](https://img.shields.io/badge/Edge-✓-0078D7?logo=microsoftedge&logoColor=white)
@@ -109,7 +109,7 @@ sismo-echo-tab/
 
 ## 🔢 Versioning
 
-Versione corrente: **3.4.1** — rilascio **2026-10-13**.
+Versione corrente: **3.4.2** — rilascio **2026-10-13**.
 
 Ogni modifica pubblicata aggiorna sempre versione e data di rilascio.
 La shell dell'estensione cambia raramente: il contenuto si aggiorna da solo via edge.
