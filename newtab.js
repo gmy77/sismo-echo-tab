@@ -91,12 +91,23 @@ async function fetchCF() {
 }
 
 // ── NOAA Solar Kp ─────────────────────────────────────────────
+function setKpDisconnected() {
+  const kpEl  = document.getElementById('kp-val');
+  const barEl = document.getElementById('kp-bar');
+  const stEl  = document.getElementById('kp-status');
+  kpEl.textContent = '--';
+  kpEl.style.color = '#ff8a65';
+  barEl.style.width = '0%';
+  stEl.textContent = 'DISCONNESSO';
+}
+
 async function fetchSolar() {
   try {
     const r  = await fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json');
     if (!r.ok) throw new Error(r.status);
     const d  = await r.json();
-    const kp = parseFloat(d[d.length - 1]?.kp_index ?? d[d.length - 1]?.Kp ?? 0);
+    const kp = parseFloat(d[d.length - 1]?.kp_index ?? d[d.length - 1]?.Kp);
+    if (!Number.isFinite(kp)) throw new Error('invalid kp');
 
     const kpEl  = document.getElementById('kp-val');
     const barEl = document.getElementById('kp-bar');
@@ -115,7 +126,7 @@ async function fetchSolar() {
       kpEl.style.color = '#ff5252'; stEl.textContent = '🔴 Tempesta';
     }
   } catch {
-    document.getElementById('kp-val').textContent = '⚠';
+    setKpDisconnected();
   }
 }
 
