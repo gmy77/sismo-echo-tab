@@ -328,6 +328,19 @@ html, body {
 
   <div class="cards">
 
+    <div class="card" id="card-eq" style="--tone:#8fd3ff">
+      <div class="card-label"><span class="pulse-dot"></span>SISMI FVG · INGV</div>
+      <div class="card-value" id="eq-mag">--</div>
+      <div class="card-unit" id="eq-unit">magnitudo · ultimo evento</div>
+      <div class="card-meta">
+        <div class="card-row">Luogo<b id="eq-place">…</b></div>
+        <div class="card-row">Quando<b id="eq-when">…</b></div>
+        <div class="card-row">Profondità<b id="eq-depth">…</b></div>
+        <div class="card-row">30 giorni<b id="eq-count">…</b></div>
+        <div class="card-row">Più forte<b id="eq-max">…</b></div>
+      </div>
+    </div>
+
     <div class="card" id="card-kp">
       <div class="card-label"><span class="pulse-dot"></span>Kp PLANETARIO</div>
       <div class="card-value" id="kp-val">--</div>
@@ -389,7 +402,7 @@ html, body {
   </div>
 </div>
 
-<div id="release-badge">v3.5.0 / 2026-11-11</div>
+<div id="release-badge">v3.6.0 / 2026-11-11</div>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -782,6 +795,64 @@ function tick() {
 tick(); setInterval(tick, 1000);
 
 // ════════════════════════════════════════════════════════
+//  SISMI FVG — INGV, letto direttamente dal browser
+//  Riquadro: Friuli Venezia Giulia e zone di confine, ultimi 30 giorni.
+// ════════════════════════════════════════════════════════
+const INGV_FVG = 'https://webservices.ingv.it/fdsnws/event/1/query?format=geojson&orderby=time'
+               + '&minlat=45.5&maxlat=46.7&minlon=12.5&maxlon=13.9';
+
+// INGV dà l'ora in UTC senza suffisso e con sei cifre decimali
+const ingvDate = t => new Date(String(t).slice(0, 23) + 'Z');
+
+function ago(date) {
+  const min = Math.max(0, Math.round((Date.now() - date) / 60000));
+  if(min < 1)  return 'adesso';
+  if(min < 60) return min + ' min fa';
+  const h = Math.round(min / 60);
+  if(h < 24)   return h + (h === 1 ? ' ora fa' : ' ore fa');
+  const d = Math.round(h / 24);
+  return d + (d === 1 ? ' giorno fa' : ' giorni fa');
+}
+
+async function fetchQuakes() {
+  try {
+    const start = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    const r = await fetch(INGV_FVG + '&starttime=' + start);
+    if(!r.ok) throw 0;
+    // senza eventi INGV risponde 204, senza corpo
+    const evs = r.status === 204 ? [] : ((await r.json()).features ?? []);
+
+    if(!evs.length) {
+      $('eq-mag').textContent = '—';
+      $('eq-unit').textContent = 'nessun evento in 30 giorni';
+      for(const id of ['eq-place', 'eq-when', 'eq-depth', 'eq-max']) $(id).textContent = '—';
+      $('eq-count').textContent = '0 eventi';
+      return;
+    }
+
+    const last = evs[0], p = last.properties;
+    const when = ingvDate(p.time);
+    const depth = last.geometry?.coordinates?.[2];
+    const mags = evs.map(e => e.properties.mag).filter(Number.isFinite);
+    const max = mags.length ? Math.max(...mags) : null;
+    const mag = Number.isFinite(p.mag) ? p.mag : null;
+
+    $('card-eq').style.setProperty('--tone',
+      mag === null || mag < 2 ? '#8fd3ff' : mag < 3 ? '#ffe082' : mag < 4 ? '#ffb08a' : '#ff6b6b');
+    $('eq-mag').textContent   = mag !== null ? mag.toFixed(1) : '--';
+    $('eq-unit').textContent  = 'magnitudo ' + (p.magType ?? '') + ' · ultimo evento';
+    $('eq-place').textContent = p.place ?? '—';
+    $('eq-when').textContent  = ago(when) + ' · ' + Z(when.getHours()) + ':' + Z(when.getMinutes());
+    $('eq-depth').textContent = Number.isFinite(depth) ? Math.round(depth) + ' km' : '—';
+    $('eq-count').textContent = evs.length + (evs.length === 1 ? ' evento' : ' eventi');
+    $('eq-max').textContent   = max !== null ? 'M ' + max.toFixed(1) : '—';
+  } catch {
+    $('eq-mag').textContent  = '--';
+    $('eq-unit').textContent = 'INGV non raggiungibile';
+  }
+}
+
+// ════════════════════════════════════════════════════════
 //  DATI NOAA SWPC
 // ════════════════════════════════════════════════════════
 
@@ -923,6 +994,7 @@ async function fetchXray() {
   }
 }
 
+fetchQuakes();    setInterval(fetchQuakes,  5 * 60_000);
 fetchKp();        setInterval(fetchKp,        60_000);
 fetchSolarWind(); setInterval(fetchSolarWind, 60_000);
 fetchXray();      setInterval(fetchXray,      60_000);

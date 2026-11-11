@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.6.0 - 2026-11-11
+
+- Nuova card «Sismi FVG»: ultimo evento INGV (magnitudo, luogo, ora, profondità), numero di eventi e magnitudo massima degli ultimi 30 giorni. I dati sono letti direttamente dal browser, ogni 5 minuti.
+- Rimosso `newtab.js`, non più usato da nessuna pagina.
+- Manifest: tolti i permessi verso INGV e NOAA, inutili perché i dati li chiede la pagina e non l'estensione; aggiornati descrizione e indirizzo del progetto.
+- README riscritto per descrivere la pagina com'è oggi.
+
 ## 3.5.0 - 2026-11-11
 
 - Nuovo aspetto in stile WinUI: superfici acriliche, ombre a strati, angoli da 8 px, icone Segoe Fluent Icons (emoji come ripiego fuori da Windows).

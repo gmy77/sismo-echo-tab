@@ -4,13 +4,15 @@
 
 # SISMO ECHO Tab
 
-**La tua nuova scheda, con la Terra sotto controllo.**
+**La tua pagina iniziale, con la Terra e il Sole sotto controllo.**
 
-Estensione per **Microsoft Edge** e **Google Chrome** che trasforma ogni nuova scheda
-nella dashboard personale di [SISMO ECHO](https://github.com/gmy77/sismo-echo):
-orologio, ricerca, ECHO Suite e monitoraggio sismico live.
+Una pagina iniziale per **Microsoft Edge** e **Google Chrome**: orologio, ricerca,
+ultimo terremoto in Friuli Venezia Giulia e meteo spaziale in tempo reale,
+su uno sfondo che si muove secondo la condizione del Sole.
 
-![Version](https://img.shields.io/badge/version-3.5.0-26c6da)
+**[sismo-echo-tab.pages.dev](https://sismo-echo-tab.pages.dev)**
+
+![Version](https://img.shields.io/badge/version-3.6.0-26c6da)
 ![Release](https://img.shields.io/badge/release-2026--11--11-26c6da)
 ![Manifest](https://img.shields.io/badge/manifest-V3-blue)
 ![Edge](https://img.shields.io/badge/Edge-✓-0078D7?logo=microsoftedge&logoColor=white)
@@ -21,98 +23,125 @@ orologio, ricerca, ECHO Suite e monitoraggio sismico live.
 
 ---
 
-## ✨ Cosa ottieni in ogni nuova scheda
+## ✨ Cosa c'è nella pagina
 
 | | |
 |---|---|
-| 🕐 **Orologio gigante** | ora con gradiente, secondi live, data in italiano, saluto contestuale |
-| 🔍 **Ricerca immediata** | barra Google con focus automatico |
-| 🚀 **ECHO Suite** | scorciatoie a Chat IA, Code, Translate, Storage, Forza 4, Othello |
-| 🌍 **SISMO FVG live** | ultimo terremoto, totale eventi, magnitudo max, indice Kp solare |
-| 🌋 **Campi Flegrei live** | ultimo micro-sisma, totale, max, eventi degli ultimi 30 giorni |
-| 🎨 **Stile 2026** | aurora animata, glassmorphism, micro-animazioni |
-| 📡 **Sempre aggiornata** | il contenuto è servito dall'edge: ogni miglioria arriva da sola, senza aggiornare l'estensione |
-| 🔌 **Fallback offline** | se il monitor non è raggiungibile, orologio locale ed eleganza intatta |
+| 🕐 **Orologio** | ora, data in italiano e saluto secondo il momento della giornata |
+| 🔍 **Ricerca** | casella Google con focus automatico |
+| 🌍 **Sismi FVG** | ultimo evento INGV (magnitudo, luogo, ora, profondità), numero di eventi e magnitudo massima degli ultimi 30 giorni |
+| 🧲 **Kp planetario** | indice geomagnetico NOAA con stato e scala G delle tempeste |
+| 🌬️ **Vento solare** | velocità, densità, Bt e Bz dalla sonda attiva del feed NOAA RTSW |
+| ☀️ **Raggi X** | classe del brillamento in corso (A, B, C, M, X) dal satellite GOES |
+| 🚀 **Collegamenti** | ECHO Monitor, SismoGlobe, StormShift, AstroSandbox, TechnoLab 95 |
 
-I dati sismici provengono da [INGV](https://www.ingv.it), quelli solari da
-[NOAA SWPC](https://www.swpc.noaa.gov), elaborati dal worker
-[sismo-echo](https://github.com/gmy77/sismo-echo) su Cloudflare.
+### Lo sfondo segue il Sole
+
+Aurora, righe di scansione e lucine non sono decorative: cambiano con i dati.
+
+| Dato | Effetto |
+|---|---|
+| Velocità del vento solare | velocità di aurora, righe di scansione, banda luminosa e lucine |
+| Kp e Bz verso sud | aurora più intensa che vira al rosso-magenta, lucine calde, reticolo più fitto |
+| Raggi X | bagliore caldo in alto, righe più marcate, tremolio di lucine e stelle |
+| Densità del vento solare | quante lucine sono accese |
+
+Una riga di stato riassume la situazione: *Sole calmo*, *attivo*, *perturbato*, *tempesta solare*.
+
+Per vedere come si comporta la pagina in condizioni diverse:
+
+- <https://sismo-echo-tab.pages.dev/?demo=calmo>
+- <https://sismo-echo-tab.pages.dev/?demo=attivo>
+- <https://sismo-echo-tab.pages.dev/?demo=tempesta>
+
+La demo cambia solo lo sfondo e la riga di stato; le card mostrano sempre i dati reali.
 
 ---
 
-## 📦 Installazione
+## 📦 Come usarla
 
-> L'estensione non è (ancora) negli store: si installa in modalità sviluppatore.
-> Sono 30 secondi, una volta sola.
+### Come pagina iniziale (il modo più semplice)
 
-### Microsoft Edge
+In Edge: **Impostazioni → Pagina iniziale, home e nuove schede**, poi imposta
+`https://sismo-echo-tab.pages.dev/` come pagina di avvio e come pulsante Home.
 
-1. Scarica o clona questo repository:
+### Come nuova scheda (estensione)
+
+L'estensione non è negli store: si carica in modalità sviluppatore.
+
+1. Clona il repository:
    ```bash
    git clone https://github.com/gmy77/sismo-echo-tab.git
    ```
-2. Apri `edge://extensions` nella barra degli indirizzi
-3. Attiva l'interruttore **Modalità sviluppatore** (in basso a sinistra)
-4. Clicca **Carica decompressa** e seleziona la cartella `sismo-echo-tab`
-5. Apri una nuova scheda — benvenuto in ECHO 🌋
-
-### Google Chrome
-
-1. Stesso download/clone di cui sopra
-2. Apri `chrome://extensions`
-3. Attiva **Modalità sviluppatore** (in alto a destra)
-4. Clicca **Carica estensione non pacchettizzata** e seleziona la cartella
-5. Nuova scheda → fatto
-
-> 💡 Al primo avvio Chrome/Edge chiede conferma per la sostituzione della
-> nuova scheda: scegli **Mantieni**.
+2. Apri `edge://extensions` (oppure `chrome://extensions`)
+3. Attiva **Modalità sviluppatore**
+4. Scegli **Carica decompressa** e seleziona la cartella `sismo-echo-tab`
+5. Alla prima nuova scheda il browser chiede conferma: scegli **Mantieni**
 
 ---
 
 ## 🏗️ Come funziona
 
 ```
-nuova scheda
-   └── newtab.html (shell locale, sfondo scuro, zero flash)
-         └── <iframe> → https://sismo-fvg.gimmy077.workers.dev/newtab
-               ├── dati live: /api/events · /api/stats · /api/solar · /api/cf
-               └── timeout 8s → fallback offline con orologio locale
+pagina iniziale ──────────────┐
+                              ├──► https://sismo-echo-tab.pages.dev  (index.html)
+nuova scheda (estensione)     │       ├── INGV       → sismi FVG
+   └── newtab.html ─ <iframe> ┘       ├── NOAA SWPC  → Kp, vento solare, raggi X
+                                      └── Google Fonts → carattere Orbitron
 ```
 
-L'estensione è una **shell sottile**: tutto il contenuto vive sul worker
-Cloudflare e viene renderizzato all'edge. Vantaggi:
-
-- **aggiornamenti istantanei** — ogni deploy del worker si riflette subito nella tab
-- **footprint minimo** — l'estensione pesa pochi KB, niente build, niente dipendenze
-- **un'unica fonte di verità** — la stessa pagina è raggiungibile anche senza estensione su [/newtab](https://sismo-fvg.gimmy077.workers.dev/newtab)
+Tutta la pagina è un solo file, `index.html`, servito da Cloudflare Pages.
+I dati vengono chiesti **direttamente dal browser** a INGV e NOAA: non c'è nessun server in mezzo.
+L'estensione è solo un involucro che apre la stessa pagina in un `<iframe>`, quindi
+ogni aggiornamento pubblicato arriva subito, senza reinstallare nulla.
 
 ### Struttura del progetto
 
 ```
 sismo-echo-tab/
+├── index.html         ← la pagina: stile, sfondo WebGL, lucine, dati
+├── newtab.html        ← involucro dell'estensione (iframe verso Pages)
 ├── manifest.json      ← Manifest V3 (chrome_url_overrides)
-├── newtab.html        ← shell: loader, iframe, fallback offline
-├── newtab.js          ← logica shell (timeout, orologio fallback)
+├── _redirects         ← regola di Cloudflare Pages
+├── deploy.bat         ← pubblicazione su Cloudflare Pages
 ├── icons/             ← 16 / 48 / 128 px
 └── make-icons.ps1     ← generatore icone (PowerShell + System.Drawing)
 ```
+
+### Pubblicazione
+
+```bash
+wrangler pages deploy . --project-name sismo-echo-tab --branch main
+```
+
+Oppure doppio clic su `deploy.bat`. Il push su GitHub da solo non aggiorna la pagina.
+
+---
+
+## 🎨 Aspetto
+
+Stile ispirato a WinUI: superfici acriliche, ombre a strati, angoli da 8 px.
+I testi usano *Segoe UI Variable*, i numeri *Orbitron*, le icone *Segoe Fluent Icons*
+(fuori da Windows vengono sostituite da emoji).
 
 ---
 
 ## 🔒 Privacy
 
-- **Zero raccolta dati.** Nessuna analitica, nessun tracker, nessun cookie proprietario.
-- **Zero permessi speciali.** Il manifest non richiede `permissions`: solo l'override della nuova scheda.
-- L'unica connessione è verso il worker `sismo-fvg.gimmy077.workers.dev` per il contenuto della pagina.
+- **Zero raccolta dati.** Nessuna analitica, nessun tracker, nessun cookie.
+- **Zero permessi.** Il manifest chiede solo di sostituire la nuova scheda.
+- La pagina contatta soltanto: `sismo-echo-tab.pages.dev` (la pagina stessa),
+  `webservices.ingv.it` (sismi), `services.swpc.noaa.gov` (meteo spaziale) e
+  `fonts.googleapis.com` / `fonts.gstatic.com` (carattere Orbitron).
 
 ---
 
 ## 🔢 Versioning
 
-Versione corrente: **3.5.0** — rilascio **2026-11-11**.
+Versione corrente: **3.6.0** — rilascio **2026-11-11**.
 
-Ogni modifica pubblicata aggiorna sempre versione e data di rilascio.
-La shell dell'estensione cambia raramente: il contenuto si aggiorna da solo via edge.
+Ogni modifica pubblicata aggiorna versione e data di rilascio in `manifest.json`,
+nel badge di `index.html`, in questo file e in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
