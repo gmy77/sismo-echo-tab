@@ -12,7 +12,7 @@ su uno sfondo che si muove secondo la condizione del Sole.
 
 **[sismo-echo-tab.pages.dev](https://sismo-echo-tab.pages.dev)**
 
-![Version](https://img.shields.io/badge/version-3.6.0-26c6da)
+![Version](https://img.shields.io/badge/version-3.7.0-26c6da)
 ![Release](https://img.shields.io/badge/release-2026--11--11-26c6da)
 ![Manifest](https://img.shields.io/badge/manifest-V3-blue)
 ![Edge](https://img.shields.io/badge/Edge-✓-0078D7?logo=microsoftedge&logoColor=white)
@@ -33,7 +33,7 @@ su uno sfondo che si muove secondo la condizione del Sole.
 | 🧲 **Kp planetario** | indice geomagnetico NOAA con stato e scala G delle tempeste |
 | 🌬️ **Vento solare** | velocità, densità, Bt e Bz dalla sonda attiva del feed NOAA RTSW |
 | ☀️ **Raggi X** | classe del brillamento in corso (A, B, C, M, X) dal satellite GOES |
-| 🚀 **Collegamenti** | ECHO Monitor, SismoGlobe, StormShift, AstroSandbox, TechnoLab 95 |
+| 🚀 **Collegamenti** | Tutte le app della ECHO Suite, nello stesso ordine della griglia su gimmycloud.net: ECHO Monitor, Radiazione, Terra Dinamica, Constellation, SAA, Chat, Code, Translate, Forza 4, Othello, AstroSandbox, TechnoLab 95, SismoGlobe, METOP Polar, più StormShift |
 
 ### Lo sfondo segue il Sole
 
@@ -138,7 +138,7 @@ I testi usano *Segoe UI Variable*, i numeri *Orbitron*, le icone *Segoe Fluent I
 
 ## 🔢 Versioning
 
-Versione corrente: **3.6.0** — rilascio **2026-11-11**.
+Versione corrente: **3.7.0** — rilascio **2026-11-20**.
 
 Ogni modifica pubblicata aggiorna versione e data di rilascio in `manifest.json`,
 nel badge di `index.html`, in questo file e in [CHANGELOG.md](CHANGELOG.md).

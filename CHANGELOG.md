@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.7.0 - 2026-11-20
+
+- Etichette in basso: ora ci sono tutte le app della ECHO Suite (15), nello stesso ordine della griglia su gimmycloud.net. Nuove: Radiazione, Terra Dinamica, Constellation, SAA, Chat, Code, Translate, Forza 4, Othello, METOP Polar. Ogni etichetta ha un suggerimento al passaggio del mouse.
+- ECHO Monitor punta a `gimmycloud.net` invece che all'indirizzo `workers.dev`.
+- Etichette un po' più compatte, su due righe nei monitor normali.
+- Su schermi stretti (telefono) la pagina ora scorre: prima card ed etichette restavano tagliate in basso.
+
 ## 3.6.0 - 2026-11-11
 
 - Nuova card «Sismi FVG»: ultimo evento INGV (magnitudo, luogo, ora, profondità), numero di eventi e magnitudo massima degli ultimi 30 giorni. I dati sono letti direttamente dal browser, ogni 5 minuti.

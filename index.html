@@ -255,18 +255,19 @@ html, body {
   display: flex; gap: 10px; flex-wrap: wrap;
   justify-content: center;
   margin-top: 18px;
+  max-width: 1080px; margin-left: auto; margin-right: auto;
   animation: fadeUp .6s ease .4s both;
   pointer-events: all;
 }
 .link-pill {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 9px 16px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 13px;
   border-radius: var(--radius);
   border: 1px solid var(--stroke);
   background: var(--acrylic);
   backdrop-filter: blur(30px) saturate(140%);
   -webkit-backdrop-filter: blur(30px) saturate(140%);
-  font-size: .9rem; font-weight: 600; letter-spacing: .04em;
+  font-size: .84rem; font-weight: 600; letter-spacing: .04em;
   text-decoration: none; color: var(--txt);
   text-shadow: var(--shadow-txt);
   box-shadow: var(--shadow-ctl), 0 1px 0 rgba(255,255,255,.07) inset;
@@ -298,6 +299,8 @@ html, body {
 }
 @media (max-width: 760px) {
   #sun-desc { display: none; }
+  /* su schermi stretti card ed etichette non stanno in altezza: la colonna scorre */
+  #ui { overflow-y: auto; justify-content: safe center; pointer-events: auto; }
 }
 @media (max-height: 720px) {
   #clock-wrap { margin-bottom: 12px; }
@@ -383,26 +386,58 @@ html, body {
     <span id="sun-desc">righe e lucine si muovono con vento solare, Kp e raggi X</span>
   </div>
 
+  <!-- Stesse app e stesso ordine della griglia ECHO Suite su gimmycloud.net
+       (catalogo: repos\sismo-echo\ECHO_SUITE.md). Aggiungere qui ogni scheda nuova. -->
   <div class="links">
-    <a class="link-pill" href="https://sismo-fvg.gimmy077.workers.dev" target="_top" rel="noopener">
+    <a class="link-pill" href="https://gimmycloud.net" target="_top" rel="noopener" title="Dashboard sismica FVG e launcher ECHO Suite">
       <span class="ico" data-fb="📡">&#xEC05;</span>ECHO Monitor
     </a>
-    <a class="link-pill" href="https://sismo.gimmycloud.net" target="_top" rel="noopener">
-      <span class="ico" data-fb="🌍">&#xE774;</span>SismoGlobe
+    <a class="link-pill" href="https://gimmycloud.net/radiazione" target="_top" rel="noopener" title="Radiazione spaziale GOES e scala S1–S5">
+      <span class="ico" data-fb="☀️">&#xE706;</span>Radiazione
     </a>
-    <a class="link-pill" href="https://stormshift.gimmycloud.net" target="_top" rel="noopener">
-      <span class="ico" data-fb="⛈️">&#xE945;</span>StormShift
+    <a class="link-pill" href="https://sismo.gimmycloud.net/terra.html" target="_top" rel="noopener" title="Rotazione, polo, asse, scudo magnetico e gravità">
+      <span class="ico" data-fb="🧭">&#xE909;</span>Terra Dinamica
     </a>
-    <a class="link-pill" href="https://astro.gimmycloud.net" target="_top" rel="noopener">
+    <a class="link-pill" href="https://echo-constellation.gimmy077.workers.dev" target="_top" rel="noopener" title="Satelliti in tempo reale su mappa piatta">
+      <span class="ico" data-fb="💫">&#xE81D;</span>Constellation
+    </a>
+    <a class="link-pill" href="https://saa-observatory.gimmy077.workers.dev" target="_top" rel="noopener" title="Anomalia del Sud Atlantico, IGRF-14 e storico NOAA">
+      <span class="ico" data-fb="🧲">&#xE9D9;</span>SAA
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/chat" target="_top" rel="noopener" title="Assistente IA conversazionale">
+      <span class="ico" data-fb="🧠">&#xE8BD;</span>Chat
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/code" target="_top" rel="noopener" title="Assistente di programmazione">
+      <span class="ico" data-fb="⌨️">&#xE943;</span>Code
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/traduttore" target="_top" rel="noopener" title="Traduttore EN ↔ IT">
+      <span class="ico" data-fb="🌐">&#xF2B7;</span>Translate
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/forza4" target="_top" rel="noopener" title="Forza 4 con IA che impara">
+      <span class="ico" data-fb="🔴">&#xE7FC;</span>Forza 4
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/othello" target="_top" rel="noopener" title="Othello contro un'IA adattiva">
+      <span class="ico" data-fb="⚫">&#xE80A;</span>Othello
+    </a>
+    <a class="link-pill" href="https://astro.gimmycloud.net" target="_top" rel="noopener" title="Simulatore falling-sand con fisica spaziale">
       <span class="ico" data-fb="🪐">&#xE734;</span>AstroSandbox
     </a>
-    <a class="link-pill" href="https://techno.gimmycloud.net" target="_top" rel="noopener">
+    <a class="link-pill" href="https://techno.gimmycloud.net" target="_top" rel="noopener" title="Groovebox techno Italia '95-2000">
       <span class="ico" data-fb="🎛️">&#xE8D6;</span>TechnoLab 95
+    </a>
+    <a class="link-pill" href="https://sismo.gimmycloud.net" target="_top" rel="noopener" title="Terremoti del mondo su globo 3D">
+      <span class="ico" data-fb="🌍">&#xE774;</span>SismoGlobe
+    </a>
+    <a class="link-pill" href="https://gimmycloud.net/polar" target="_top" rel="noopener" title="Satelliti polari EUMETSAT Metop-B/C">
+      <span class="ico" data-fb="🛰️">&#xE753;</span>METOP Polar
+    </a>
+    <a class="link-pill" href="https://stormshift.gimmycloud.net" target="_top" rel="noopener" title="Radar meteo FVG">
+      <span class="ico" data-fb="⛈️">&#xE945;</span>StormShift
     </a>
   </div>
 </div>
 
-<div id="release-badge">v3.6.0 / 2026-11-11</div>
+<div id="release-badge">v3.7.0 / 2026-11-20</div>
 
 <script>
 const $ = id => document.getElementById(id);
